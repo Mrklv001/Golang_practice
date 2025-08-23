@@ -2,18 +2,18 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
+	"strings"
+	"unicode/utf8"
 )
 
-func generateCompliment(name string) string {
-	comliment := []string{
-		"Ты великолепен,",
-		"У тебя потрясающая улыбка,",
-		"Ты вдохновляешь,",
-	}
-	rand.Seed(time.Now().UnixNano())
-	randomCompliment := comliment[rand.Intn(len(comliment))]
+func main() {
+	isSecured := securePassword("asd123asD")
+	fmt.Println(isSecured)
+}
 
-	return fmt.Sprintf("%s %s!", randomCompliment, name)
+func securePassword(pass string) bool {
+	return utf8.RuneCountInString(pass) >= 6 &&
+		pass != strings.ToLower(pass) &&
+		pass != strings.ToUpper(pass)
+
 }
