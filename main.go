@@ -1,13 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-func main() {
-	result := sum(2, 5)
-	fmt.Println(result)
-}
+func generateCompliment(name string) string {
+	comliment := []string{
+		"Ты великолепен,",
+		"У тебя потрясающая улыбка,",
+		"Ты вдохновляешь,",
+	}
+	rand.Seed(time.Now().UnixNano())
+	randomCompliment := comliment[rand.Intn(len(comliment))]
 
-func sum(n1, n2 int) int {
-	result := n1 + n2
-	return result
+	return fmt.Sprintf("%s %s!", randomCompliment, name)
 }
