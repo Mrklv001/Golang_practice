@@ -2,18 +2,15 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"unicode/utf8"
+	"math"
 )
 
 func main() {
-	isSecured := securePassword("asd123asD")
-	fmt.Println(isSecured)
-}
+	var discountPercent float64 = 20.0
+	var productPrice float64 = 100.0
 
-func securePassword(pass string) bool {
-	return utf8.RuneCountInString(pass) >= 6 &&
-		pass != strings.ToLower(pass) &&
-		pass != strings.ToUpper(pass)
+	newPrice := productPrice - (productPrice * (discountPercent / 100))
+	finalPrice := math.Floor(newPrice*100) / 100
+	fmt.Println(finalPrice)
 
 }
