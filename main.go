@@ -6,11 +6,17 @@ import (
 )
 
 func main() {
-	var discountPercent float64 = 20.0
-	var productPrice float64 = 100.0
+	var random float64 = 44.4
+	isEven := random == math.Trunc(random) && int(random)%2 == 0
 
-	newPrice := productPrice - (productPrice * (discountPercent / 100))
-	finalPrice := math.Floor(newPrice*100) / 100
-	fmt.Println(finalPrice)
-
+	fmt.Printf("Исходное число: %.1f\n", random)
+	fmt.Printf("Исходное число, увеличенное на 10%%: %.5f\n", random+(random*0.1))
+	fmt.Printf("Исходное число является четным: %t\n", isEven)
+	if random < 10 {
+		fmt.Println("Предпоследняя цифра целой части исходного числа: 0")
+	} else if 9 < random && random < 100 {
+		fmt.Printf("Предпоследняя цифра целой части исходного числа: %d\n", int(random)/10)
+	} else if random > 99 {
+		fmt.Printf("Предпоследняя цифра целой части исходного числа: %d\n", int(random)/100)
+	}
 }
